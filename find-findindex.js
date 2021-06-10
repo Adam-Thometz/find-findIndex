@@ -12,8 +12,10 @@ findUserByUsername(users, 'taco') // undefined
 */
 
 
-function findUserByUsername(usersArray, username) {
-  
+function findUserByUsername(usersArray, un) {
+  return usersArray.find(function(user) {
+    return (user.username === un);
+  })
 }
 
 /*
@@ -30,5 +32,10 @@ removeUser(users, 'akagen') // undefined
 */
 
 function removeUser(usersArray, username) {
+  let idx = usersArray.findIndex(function(user) {
+    return user.username === username;
+  })
+  if (idx === -1) return undefined;
 
+  return usersArray.splice(idx, 1)[0];
 }
